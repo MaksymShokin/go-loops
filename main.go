@@ -21,9 +21,12 @@ func main() {
 	} else {
 		age = strings.Replace(age, "\n", "", -1)
 	}
-	parsedAge, _ := strconv.ParseInt(age, 0, 64)
+	parsedAge, err := strconv.ParseInt(age, 0, 64)
 
-
+	if err != nil {
+		fmt.Println("Not correct input")
+		return
+	}
 
 	if parsedAge > 18 && parsedAge < 65 {
 		fmt.Println("Welcome to the club")
