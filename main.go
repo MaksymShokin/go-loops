@@ -12,7 +12,7 @@ import (
 var reader = bufio.NewReader(os.Stdin)
 
 
-func main() {
+func getUserAge() (int, error) {
 	fmt.Print("Enter your age: ")
 	age, _ := reader.ReadString('\n')
 
@@ -23,14 +23,20 @@ func main() {
 	}
 	parsedAge, err := strconv.ParseInt(age, 0, 64)
 
+	return int(parsedAge), err
+}
+
+func main() {
+	userAge, err := getUserAge()
+
 	if err != nil {
 		fmt.Println("Not correct input")
 		return
 	}
 
-	if parsedAge > 18 && parsedAge < 65 {
+	if userAge > 18 && userAge < 65 {
 		fmt.Println("Welcome to the club")
-	} else if parsedAge < 18 {
+	} else if userAge < 18 {
 		fmt.Println("Sorry, you are too young")
 	} else {
 		fmt.Println("Good over 65")
