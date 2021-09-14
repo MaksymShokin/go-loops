@@ -23,6 +23,7 @@ func parseInput(input string) string {
 }
 
 func getInputNumber() (int, error) {
+	fmt.Println("Please enter a number: ")
 	input, err := reader.ReadString('\n')
 
 	if err != nil {
@@ -64,6 +65,20 @@ func main() {
 
 func calculateSumUpToNumber() {
 	chosenNumber, err := getInputNumber()
+
+	sum := 0
+
+	if err != nil {
+		fmt.Println("Invalid number")
+		return
+	}
+
+	for i := 1; i <= chosenNumber; i++ {
+		sum += i
+	}
+
+	fmt.Printf("Sum is %v", sum)
+
 
 }
 
