@@ -52,7 +52,7 @@ func main() {
 		calculateSumUpToNumber()
 
 	case "2":
-		findTheFactorial()
+		calculateFactorial()
 
 	case "3":
 		sumNumbers()
@@ -78,13 +78,27 @@ func calculateSumUpToNumber() {
 	}
 
 	fmt.Printf("Sum is %v", sum)
-
-
 }
 
-func findTheFactorial() {}
-func sumNumbers()       {}
-func sumList()          {}
+func calculateFactorial() {
+	chosenNumber, err := getInputNumber()
+
+	factorial := 1
+
+	if err != nil {
+		fmt.Println("Invalid number")
+		return
+	}
+
+	for i := 1; i <= chosenNumber; i++ {
+		factorial *= i
+	}
+
+	fmt.Printf("factorial is %v", factorial)
+}
+
+func sumNumbers() {}
+func sumList()    {}
 
 func getUserChoice() (string, error) {
 	fmt.Println("Please enter your choice:")
