@@ -97,8 +97,22 @@ func calculateFactorial() {
 	fmt.Printf("factorial is %v", factorial)
 }
 
-func sumNumbers() {}
-func sumList()    {}
+func sumNumbers() {
+	isEnteringNumber := true
+	sum := 0
+
+	for isEnteringNumber {
+		chosenNumber, err := getInputNumber()
+		isEnteringNumber = err == nil
+		sum += chosenNumber
+	}
+
+	fmt.Printf("The result is: %v\n", sum)
+
+}
+func sumList() {
+	 fmt.Println("Please enter comman separated list of numbers: ")
+}
 
 func getUserChoice() (string, error) {
 	fmt.Println("Please enter your choice:")
