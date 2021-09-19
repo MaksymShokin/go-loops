@@ -126,8 +126,12 @@ func sumList() {
 	sum := 0
 
 	for _, value := range splittedInput {
-		number, _ := strconv.ParseInt(value, 0, 64)
+		number, err := strconv.ParseInt(value, 0, 64)
 		sum += int(number)
+
+		if err != nil {
+			continue
+		}
 	}
 
 	fmt.Printf("The result is: %v\n", sum)
