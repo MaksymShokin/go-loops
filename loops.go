@@ -111,7 +111,26 @@ func sumNumbers() {
 
 }
 func sumList() {
-	 fmt.Println("Please enter comman separated list of numbers: ")
+	fmt.Println("Please enter comma separated list of numbers: ")
+
+	numberList, err := reader.ReadString('\n')
+
+	if err != nil {
+		fmt.Println("Invalid number")
+		return
+	}
+
+	input := parseInput(numberList)
+	splittedInput := strings.Split(input, ",")
+
+	sum := 0
+
+	for _, value := range splittedInput {
+		number, _ := strconv.ParseInt(value, 0, 64)
+		sum += int(number)
+	}
+
+	fmt.Printf("The result is: %v\n", sum)
 }
 
 func getUserChoice() (string, error) {
